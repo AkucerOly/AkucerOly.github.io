@@ -1,17 +1,13 @@
+<?php get_header(); ?>
+<main id="main" class="site-main" role="main">
 <?php
-/**
- * Front to the WordPress application. This file doesn't do anything, but loads
- * wp-blog-header.php which does and tells WordPress to load the theme.
- *
- * @package WordPress
- */
+	$sections = apply_filters( 'dw_resume_frontpage_sections_order', array(
+		'about', 'skills', 'expertise', 'expierence', 'portfolio', 'testimonials', 'contact', 'cta'
+	) );
 
-/**
- * Tells WordPress to load the WordPress theme and output it.
- *
- * @var bool
- */
-define('WP_USE_THEMES', true);
-
-/** Loads the WordPress Environment and Template */
-require( dirname( __FILE__ ) . '/wp-blog-header.php' );
+	foreach ( $sections as $section ) {
+		get_template_part('section-parts/section', $section );
+	}
+?>
+</main>
+<?php get_footer(); ?>
